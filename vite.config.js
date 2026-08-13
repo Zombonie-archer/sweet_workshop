@@ -3,8 +3,11 @@ import { glob } from 'glob';
 import injectHTML from 'vite-plugin-html-inject';
 import FullReload from 'vite-plugin-full-reload';
 import SortCss from 'postcss-sort-media-queries';
+import path from 'path';
 
 export default defineConfig(({ command }) => {
+  const htmlFiles = glob.sync('*.html', { cwd: path.resolve(__dirname, 'src') });
+
   return {
     define: {
       [command === 'serve' ? 'global' : '_global']: {},
@@ -13,7 +16,7 @@ export default defineConfig(({ command }) => {
     build: {
       sourcemap: true,
       rollupOptions: {
-        input: glob.sync('./src/*.html'),
+        input: htmlFiles,
         output: {
           manualChunks(id) {
             if (id.includes('node_modules')) {
