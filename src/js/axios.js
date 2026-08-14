@@ -2,7 +2,7 @@ import axios from 'axios';
 
 const BASE_URL = 'https://deserts-store.b.goit.study/api/';
 
-export default async function request({ method = "get", body, route }) {
+export default async function request({ method = "get", body = {}, route = "" }) {
   const url = BASE_URL + route;
   if (method.toLowerCase() === 'get') {
     return await axios.get(url, {
