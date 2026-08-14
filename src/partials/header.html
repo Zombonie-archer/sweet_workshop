@@ -1,4 +1,26 @@
 <header id="header" class="header">
-  <div class="container">
+  <div class="header-container container">
+    <div class="logo-nav-wrapper">
+      <a href="/" class="logo">
+        <svg class="header-logo" width="160" height="68">
+          <use href="/img/logo.svg"></use>
+        </svg>
+      </a>
+      <nav class="header-nav hidden">
+        <ul class="header-nav-list">
+          <li><a class="link" href="#about-us">About Us</a></li>
+          <li><a class="link" href="#benefits">Benefits</a></li>
+          <li><a class="link" href="#gallery">Gallery</a></li>
+          <li><a class="link" href="#testimonials">Testimonials</a></li>
+          <li><a class="link" href="#contacts">Contacts</a></li>
+        </ul>
+      </nav>
+    </div>
+    <button id="hamburger" type="button" class="header-mobile-menu" aria-label="Mobile menu">
+      <svg class="header-mobile-menu-icon" width="24" height="24">
+        <use href="/img/sprite-optimization.svg#menu"></use>
+      </svg>
+    </button>
+    <a href="#contacts" class="btn header-order hidden">Order Now</a>
   </div>
 </header>
