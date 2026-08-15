@@ -3,8 +3,13 @@ import iziToast from 'izitoast';
 import "izitoast/dist/css/iziToast.min.css";
 
 const filterContainer = document.querySelector('.dessert-filter');
+const selectContainer = document.querySelector('.dessert-filter-select');
+
 const dessertContainer = document.querySelector('.dessert-list');
+
 const loadMore = document.querySelector('.load-more');
+let currentCategory = 'all';
+
 let currentPage = 1;
 
 filterContainer.innerHTML = `
@@ -13,6 +18,10 @@ filterContainer.innerHTML = `
         <span class="dessert-name">Всі десерти</span>
     </label>
 `;
+selectContainer.innerHTML = `
+    <option class="select-item" value="all">Всі десерти</option>
+`;
+
 
 async function createCategory() {
     try {
@@ -20,25 +29,40 @@ async function createCategory() {
         const categories = filters.data;
 
         filterContainer.insertAdjacentHTML('beforeend', categoryMarcup(categories))
+        selectContainer.insertAdjacentHTML('beforeend',selectorMarcup(categories));
     } catch (error) {
         console.log("Error category load", error.message);
     }
 };
 function categoryMarcup(categories) {
-    return categories.map(({ name }) => `
+    return categories.map(({ _id, name }) => `
         <label class="dessert-category-label">
-            <input class="dessert-btn" type="radio" name="dessert-category" value="${name}">
+            <input class="dessert-btn" type="radio" name="dessert-category" value="${_id}">
             <span class="dessert-name">${name}</span>
         </label>
     
     `).join("");
 };
+function selectorMarcup(categories) {
+    return categories.map(({ _id, name }) => `
+
+        <option class="select-item" value="${_id}">${name}</option>
+
+    `).join("");
+}
 createCategory();
 
 
 async function createDesserts() {
     try {
-        const desserts = await request({ method: 'get', body: { page: currentPage, limit: 8 }, route: 'desserts' });
+
+        const requestParams = { page: currentPage, limit: 8 };
+        if (currentCategory !== 'all') {
+            requestParams.category = currentCategory; 
+        }
+
+
+        const desserts = await request({ method: 'get', body: requestParams, route: 'desserts' });
         const dessertsCard = desserts.data.desserts;
         
         dessertContainer.insertAdjacentHTML('beforeend', dessertMarcup(dessertsCard));
@@ -71,7 +95,7 @@ function dessertMarcup(dessertsCard) {
             <img class="card-img" src="${image}" alt="${name}" />
             <p class="card-category"> ${categoryName}</p>
             <h3 class="card-name"> ${name}</h3>
-            <p class="crad-descr"> ${description}</p>
+            <p class="card-descr"> ${description}</p>
             <div class="card-footer">
                 <p class="card-price"><span class="price-value">${price}</span>грн</p>
                 <button class="card-btn" type="button"></button>
@@ -89,5 +113,28 @@ loadMore.addEventListener('click', () => {
     loadMore.style.display = "none";
     createDesserts();
 
-})
+});
+
+selectContainer.addEventListener('change', (event) => {
+    currentCategory = event.target.value;
+    currentPage = 1;                      
+    dessertContainer.innerHTML = '';  
+
+    const targetCategory = filterContainer.querySelector(`input[value="${currentCategory}"]`);
+    if (targetCategory) {
+        targetCategory.checked = true;
+    }
+
+    createDesserts(); 
+});
+
+filterContainer.addEventListener('change', (event) => {
+    if (event.target.classList.contains('dessert-btn')) {
+        currentCategory = event.target.value; 
+        currentPage = 1;                      
+        dessertContainer.innerHTML = '';      
+        selectContainer.value = currentCategory; 
+        createDesserts();
+    }
+});
 
