@@ -2,10 +2,12 @@ import request from './axios.js';
 import iziToast from 'izitoast';
 import "izitoast/dist/css/iziToast.min.css";
 
-
-
 const filterContainer = document.querySelector('.dessert-filter');
 const selectContainer = document.querySelector('.dessert-filter-select');
+
+const selectTrigger = document.querySelector('.dessert-select-trigger');
+const selectTriggerTitle = document.querySelector('.dessert-select-title');
+const customOptionsContainer = document.querySelector('.dessert-custom-options');
 
 const dessertContainer = document.querySelector('.dessert-list');
 
@@ -21,8 +23,15 @@ filterContainer.innerHTML = `
     </label>
 `;
 selectContainer.innerHTML = `
-    <option class="select-item" value="all">Всі десерти</option>
+    <option class="select-item active" value="all">Всі десерти</option>
 `;
+
+customOptionsContainer.innerHTML = `<li class="custom-option active" data-value="all"><span>Всі десерти</span>  </li>`;
+
+
+
+
+
 
 
 async function createCategory() {
@@ -31,11 +40,16 @@ async function createCategory() {
         const categories = filters.data;
 
         filterContainer.insertAdjacentHTML('beforeend', categoryMarcup(categories))
-        selectContainer.insertAdjacentHTML('beforeend',selectorMarcup(categories));
+        selectContainer.insertAdjacentHTML('beforeend', selectorMarcup(categories));
+
+        customOptionsContainer.insertAdjacentHTML('beforeend', customSelectorMarcup(categories));
+        
     } catch (error) {
         console.log("Error category load", error.message);
     }
 };
+
+
 function categoryMarcup(categories) {
     return categories.map(({ _id, name }) => `
         <label class="dessert-category-label">
@@ -52,12 +66,25 @@ function selectorMarcup(categories) {
 
     `).join("");
 }
+function customSelectorMarcup(categories) {
+    return categories.map(({ _id, name }) => `
+        <li class="custom-option" data-value="${_id}"><span>${name}</span></li>
+    `).join("");
+}
+
 createCategory();
+
+
+function resetAndReload() {
+    currentPage = 1;
+    dessertContainer.innerHTML = '';
+    createDesserts();
+}
+
 
 
 async function createDesserts() {
     try {
-
         const requestParams = { page: currentPage, limit: 8 };
         if (currentCategory !== 'all') {
             requestParams.category = currentCategory; 
@@ -121,27 +148,74 @@ loadMore.addEventListener('click', () => {
 
 });
 
+
 selectContainer.addEventListener('change', (event) => {
     currentCategory = event.target.value;
-    currentPage = 1;                      
-    dessertContainer.innerHTML = '';  
-
+    
+    
     const targetCategory = filterContainer.querySelector(`input[value="${currentCategory}"]`);
     if (targetCategory) {
         targetCategory.checked = true;
     }
 
-    createDesserts(); 
+   
+    const activeOption = customOptionsContainer.querySelector(`[data-value="${currentCategory}"]`);
+    if (activeOption) {
+        selectTriggerTitle.textContent = activeOption.textContent;
+        customOptionsContainer.querySelectorAll('.custom-option').forEach(el => el.classList.remove('active'));
+        activeOption.classList.add('active');
+    }
+
+    resetAndReload();
 });
 
 filterContainer.addEventListener('change', (event) => {
     if (event.target.classList.contains('dessert-btn')) {
-        currentCategory = event.target.value; 
-        currentPage = 1;                      
-        dessertContainer.innerHTML = '';      
-        selectContainer.value = currentCategory; 
-        createDesserts();
+        currentCategory = event.target.value;
+        
+        selectContainer.value = currentCategory;
+        
+        const activeOption = customOptionsContainer.querySelector(`[data-value="${currentCategory}"]`);
+        if (activeOption) {
+            selectTriggerTitle.textContent = activeOption.textContent;
+            customOptionsContainer.querySelectorAll('.custom-option').forEach(el => el.classList.remove('active'));
+            activeOption.classList.add('active');
+        }
+        
+        resetAndReload();
     }
 });
 
-// import sprite from './images/icons.svg';
+selectTrigger.addEventListener('click', (e) => {
+    e.stopPropagation(); 
+    customOptionsContainer.classList.toggle('visually-hidden');
+    selectTrigger.classList.toggle('is-open');
+});
+
+customOptionsContainer.addEventListener('click', (event) => {
+    const option = event.target.closest('.custom-option');
+    if (!option) return;
+
+    currentCategory = option.dataset.value;
+    
+    selectTriggerTitle.textContent = option.textContent;
+    
+    customOptionsContainer.querySelectorAll('.custom-option').forEach(el => el.classList.remove('active'));
+    option.classList.add('active');
+
+   selectContainer.value = currentCategory;
+    
+    const targetCategory = filterContainer.querySelector(`input[value="${currentCategory}"]`);
+    if (targetCategory) {
+        targetCategory.checked = true;
+    }
+
+    resetAndReload();
+    
+    customOptionsContainer.classList.add('visually-hidden');
+});
+
+document.addEventListener('click', () => {
+    customOptionsContainer.classList.add('visually-hidden');
+    selectTrigger.classList.remove('is-open');
+});
