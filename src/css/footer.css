@@ -1,1 +1,143 @@
+.footer {
+    background-color: #98e9e8;
+    padding: 32px 16px 24px;
+}
 
+.footer__content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.footer__logo {
+    display: block;
+    margin-bottom: 28px;
+}
+
+.footer__logo img {
+    display: block;
+    width: 150px;
+    height: auto;
+}
+
+.footer__nav {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+
+    margin-bottom: 28px;
+}
+
+.footer__nav a {
+    color: #111;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+
+    transition: opacity 200ms ease;
+}
+
+.footer__nav a:hover,
+.footer__nav a:focus {
+    opacity: 0.6;
+}
+
+.footer__icon {
+    width: 24px;
+    height: 24px;
+    fill: #000;
+    color: #000;
+}
+
+.footer__logo-icon {
+    width: 150px;
+    height: 64px;
+    fill: #000;
+    color: #000;
+}
+
+.footer__socials {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.footer__socials a {
+    color: #111;
+    text-decoration: none;
+    transition: opacity 200ms ease;
+}
+
+.footer__socials a:hover,
+.footer__socials a:focus {
+    opacity: 0.6;
+}
+
+.footer__bottom {
+    margin-top: 28px;
+    padding-top: 20px;
+
+    border-top: 1px solid #111;
+    text-align: center;
+}
+
+.footer__bottom p {
+    margin: 0;
+    font-size: 10px;
+}
+
+@media screen and (min-width: 768px) {
+    .footer {
+        padding: 40px 32px 28px;
+    }
+
+    .footer__logo {
+        margin-bottom: 28px;
+    }
+
+    .footer__nav {
+        flex-direction: row;
+        gap: 32px;
+        margin-bottom: 28px;
+    }
+
+    .footer__bottom {
+        margin-top: 32px;
+    }
+}
+
+@media screen and (min-width: 1440px) {
+    .footer {
+        padding: 72px 64px 40px;
+    }
+
+    .footer__content {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .footer__logo {
+        margin-bottom: 0;
+    }
+
+    .footer__nav {
+        flex-direction: row;
+        gap: 44px;
+        margin-bottom: 0;
+    }
+
+    .footer__socials {
+        gap: 20px;
+    }
+
+    .footer__bottom {
+        margin-top: 64px;
+        padding-top: 32px;
+    }
+}
