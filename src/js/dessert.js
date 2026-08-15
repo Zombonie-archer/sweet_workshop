@@ -2,6 +2,8 @@ import request from './axios.js';
 import iziToast from 'izitoast';
 import "izitoast/dist/css/iziToast.min.css";
 
+
+
 const filterContainer = document.querySelector('.dessert-filter');
 const selectContainer = document.querySelector('.dessert-filter-select');
 
@@ -98,7 +100,11 @@ function dessertMarcup(dessertsCard) {
             <p class="card-descr"> ${description}</p>
             <div class="card-footer">
                 <p class="card-price"><span class="price-value">${price}</span>грн</p>
-                <button class="card-btn" type="button"></button>
+                <button class="card-btn" type="button">
+                    <svg width="24" height="24">
+                        <use href="/images/icons.svg#icon-arrow_outward"></use>
+                    </svg>
+                </button>
             </div>
             
         </li>
@@ -138,3 +144,4 @@ filterContainer.addEventListener('change', (event) => {
     }
 });
 
+// import sprite from './images/icons.svg';

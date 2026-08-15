@@ -119,6 +119,9 @@
   height: 44px;
   background-color: inherit;
   transition: background-color 0.3s linear;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .card-btn:hover,
 .card-btn:focus {
