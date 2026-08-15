@@ -14,17 +14,17 @@ filterContainer.innerHTML = `
     </label>
 `;
 
-async function categoryMarcup() {
+async function createCategory() {
     try {
         const filters = await request({ method: 'get', route: 'categories' });
         const categories = filters.data;
 
-        filterContainer.insertAdjacentHTML('beforeend', createCategory(categories))
+        filterContainer.insertAdjacentHTML('beforeend', categoryMarcup(categories))
     } catch (error) {
         console.log("Error category load", error.message);
     }
 };
-function createCategory(categories) {
+function categoryMarcup(categories) {
     return categories.map(({ name }) => `
         <label class="dessert-category-label">
             <input class="dessert-btn" type="radio" name="dessert-category" value="${name}">
@@ -33,14 +33,15 @@ function createCategory(categories) {
     
     `).join("");
 };
-categoryMarcup();
+createCategory();
 
-async function dessertMarcup() {
+
+async function createDesserts() {
     try {
         const desserts = await request({ method: 'get', body: { page: currentPage, limit: 8 }, route: 'desserts' });
         const dessertsCard = desserts.data.desserts;
         
-        dessertContainer.insertAdjacentHTML('beforeend', createDesserts(dessertsCard));
+        dessertContainer.insertAdjacentHTML('beforeend', dessertMarcup(dessertsCard));
        
         const dessertsCount = dessertContainer.children.length;
         const totalItems = desserts.data.totalItems;
@@ -64,8 +65,7 @@ async function dessertMarcup() {
         
     }
 };
-
-function createDesserts(dessertsCard) {
+function dessertMarcup(dessertsCard) {
     return dessertsCard.map(({ _id, category: { name: categoryName }, description, image, name, price }) => `
         <li class="card-item" data-id="${_id}">
             <img class="card-img" src="${image}" alt="${name}" />
@@ -82,12 +82,12 @@ function createDesserts(dessertsCard) {
     
 }
 
-dessertMarcup();
+createDesserts();
 
 loadMore.addEventListener('click', () => {
     currentPage += 1;
     loadMore.style.display = "none";
-    dessertMarcup();
+    createDesserts();
 
 })
 
