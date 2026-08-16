@@ -1,6 +1,7 @@
 import request from './axios.js';
 import iziToast from 'izitoast';
 import "izitoast/dist/css/iziToast.min.css";
+import iconsUrl from '../images/icons.svg';
 
 const filterContainer = document.querySelector('.dessert-filter');
 const selectContainer = document.querySelector('.dessert-filter-select');
@@ -116,7 +117,7 @@ function dessertMarcup(dessertsCard) {
                 <p class="card-price"><span class="price-value">${price}</span>грн</p>
                 <button class="card-btn" type="button">
                     <svg width="24" height="24">
-                        <use href="images/icons.svg#icon-arrow_outward"></use>
+                        <use href="${iconsUrl}#icon-arrow_outward"></use>
                     </svg>
                 </button>
             </div>         
