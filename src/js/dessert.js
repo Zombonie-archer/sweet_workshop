@@ -142,7 +142,7 @@ loadMore.addEventListener('click', async() => {
     const dessertsCard = await createDesserts();
     if (dessertsCard.length < 8) {
         const categoryName = getCategoryName();
-        iziToast.error({
+        iziToast.warning({
             title: 'Увага',
             titleSize: '16',
             message: `Ви завантажили всі ${categoryName}`,
