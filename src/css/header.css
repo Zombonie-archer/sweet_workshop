@@ -1,5 +1,4 @@
-.header {
-  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+.header {  
   font-family: "Work Sans", sans-serif;
   font-weight: 500;
   font-size: 16px;
@@ -23,49 +22,50 @@
   align-items: center;
 }
 
-.header-logo, .header-mobile-menu-icon {
+.header-logo {
   fill: currentColor;
 }
 
 .header-nav-list {
-  display: flex;
-  gap: 24px;
+  display: flex;  
   padding-block: 24px;
+  align-items: center;
 }
 
 .hidden {
   display: none;
 }
 
+.to-orders {
+  padding-block: 8px;
+  padding-inline: 20px;  
+}
+
+.logo-nav-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
 @media screen and (min-width: 768px) {
-
-  .logo-nav-wrapper {
-    display: flex;
-    align-items: center;
-    gap: 49px;
-  }
-
   .header-mobile-menu {
     display: none;
-  }
-
-  .header-order {
-    display: inline-block;
-    padding: 6px 19px;
   }
 
   .header-nav {
     display: block;
   }
+
+  .header-nav-list {
+    gap: 16px;
+  }
 }
 
 /* Styles for Desktop devices */
-@media screen and (min-width: 1440px) {
-  .logo-nav-wrapper {
-    gap: 32px;
-  }
+@media screen and (min-width: 1440px) { 
 
-  .header-order {
-    padding: 6px 55px;
+  .header-nav-list {
+    gap: 32px;
   }
 }
