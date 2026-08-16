@@ -9,6 +9,7 @@ export default defineConfig(({ command }) => {
   const htmlFiles = glob.sync('*.html', { cwd: path.resolve(__dirname, 'src') });
 
   return {
+    base: '/sweet_workshop/',
     define: {
       [command === 'serve' ? 'global' : '_global']: {},
     },
