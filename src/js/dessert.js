@@ -116,7 +116,7 @@ function dessertMarcup(dessertsCard) {
                 <p class="card-price"><span class="price-value">${price}</span>грн</p>
                 <button class="card-btn" type="button">
                     <svg width="24" height="24">
-                        <use href="/images/icons.svg#icon-arrow_outward"></use>
+                        <use href="images/icons.svg#icon-arrow_outward"></use>
                     </svg>
                 </button>
             </div>         
