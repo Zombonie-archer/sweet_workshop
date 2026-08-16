@@ -12,18 +12,18 @@ function initSwiper() {
     swiper = new Swiper('.aboutSwiper', {
       modules: [Navigation, Pagination],
 
-      slidesPerView: 1,
-      spaceBetween: 30,
-      loop: true,
+      slidesPerView: 2,
+      spaceBetween: 24,
+      loop: false,
 
       pagination: {
-        el: '.swiper-pagination',
+        el: '.about-pagination',
         clickable: true,
       },
 
       navigation: {
-        nextEl: '.swiper-button-next',
-        prevEl: '.swiper-button-prev',
+        nextEl: '.about-button-next',
+        prevEl: '.about-button-prev',
       },
     });
   }
