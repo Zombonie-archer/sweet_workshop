@@ -32,7 +32,7 @@
 .footer__nav a {
     color: #080C0C;
     text-decoration: none;
-    font-family: var(--font-family);
+    font-family: 'Work Sans', sans-serif;;
     font-weight: 600;
     font-size: 14px;
     line-height: 150%;
@@ -85,10 +85,6 @@
     transition: fill 250ms ease;
 }
 
-.footer__socials a:hover .footer__icon,
-.footer__socials a:focus-visible .footer__icon {
-    fill: #F19898;
-}
 
 
 .footer__bottom {
@@ -99,7 +95,7 @@
 }
 
 .footer__bottom p {
-    font-family: var(--font-family);
+    font-family: 'Work Sans', sans-serif;
     font-weight: 400;
     font-size: 14px;
     line-height: 150%;
@@ -115,11 +111,25 @@
         margin-bottom: 28px;
     }
 
+    .footer__logo img {
+        width: 309px;
+    }
+
     .footer__nav {
         flex-direction: row;
         gap: 32px;
         margin-bottom: 28px;
     }
+
+    .footer__nav a {
+     font-family: var(--font-family);
+     font-size: 18px;
+     }
+
+    .footer__icon {
+     width: 44px;
+     height: 44px;
+     }
 
     .footer__bottom {
         margin-top: 32px;
