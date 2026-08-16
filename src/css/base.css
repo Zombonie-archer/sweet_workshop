@@ -88,8 +88,7 @@ h3 {
 }
 
 .link {
-  font-weight: 500;
-  transition: border-bottom 0.3s linear;
+  font-weight: 500;  
   color: #080c0c;
 }
 
