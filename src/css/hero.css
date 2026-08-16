@@ -51,6 +51,7 @@
   align-items: center;
   justify-content: center;
   text-align: center;
+  gap: 24px;
 }
 
 .hero-title {
@@ -82,7 +83,7 @@
   color: #fff;
   max-width: 335px;
   margin: 0 auto;
-  margin-top: 24px;
+  margin-bottom: 8px;
 }
 
 @media screen and (min-width: 768px) {
@@ -98,18 +99,16 @@
 }
 
 .hero-button {
-  margin-top: 32px;
-  margin-left: auto;
-  margin-right: auto;
-  display: block;
-  padding: 10px 82px;
+  width: 335px;
+  height: 44px;
+  padding: 10px 24px;
   white-space: nowrap;
   transition: border-color 250ms ease;
 }
 
 @media screen and (min-width: 768px) {
   .hero-button {
-    padding: 10px 24px;
+    width: 219px;
   }
 }
 
