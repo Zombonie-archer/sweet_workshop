@@ -16,7 +16,10 @@
       rel="stylesheet"
     />
     <script type="module" crossorigin src="/sweet_workshop/index.js"></script>
-    <link rel="stylesheet" crossorigin href="/sweet_workshop/assets/index-ONcbdHDX.css">
+    <link rel="modulepreload" crossorigin href="/sweet_workshop/assets/rolldown-runtime-hePW80VL.js">
+    <link rel="modulepreload" crossorigin href="/sweet_workshop/assets/vendor-DLaoNbSX.js">
+    <link rel="stylesheet" crossorigin href="/sweet_workshop/assets/vendor-BFQQRvTW.css">
+    <link rel="stylesheet" crossorigin href="/sweet_workshop/assets/index-Ce0p90hY.css">
   </head>
   <body>
     <header id="header" class="header">
@@ -34,6 +37,33 @@
 
       <section id="dessert" class="section">
   <div class="container">
+    <h2 class="dessert-title">Солодощі</h2>
+    <div class="dessert-category-box">
+      <p class="dessert-descr">
+        Спробуйте наші смачні десерти, які вас здивують!
+      </p>
+      <div class="dessert-select-wrapper">
+        <select
+          class="dessert-filter-select visually-hidden"
+          name="dessert-select"
+        ></select>
+
+        <button type="button" class="dessert-select-trigger">
+          <span class="dessert-select-title">Всі десерти</span>
+          <span class="dessert-select-icon">
+            <svg width="24" height="24">
+              <use href="/sweet_workshop/assets/icons-BmBPcrae.svg#icon-keyboard_arrow_down"></use>
+            </svg>
+          </span>
+        </button>
+
+        <ul class="dessert-custom-options visually-hidden"></ul>
+      </div>
+    </div>
+
+    <div class="dessert-filter"></div>
+    <ul class="dessert-list"></ul>
+    <button class="load-more" type="button">Завантажити ще</button>
   </div>
 </section>
 
