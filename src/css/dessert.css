@@ -148,13 +148,13 @@
   background-color: #f5fdfd;
 }
 
-.dessert-filter-select {
+/* .dessert-filter-select {
   padding: 8px 12px;
   font-weight: 400;
   font-size: 16px;
   line-height: 1.5;
   color: #080c0c;
-}
+} */
 
 .visually-hidden {
   position: absolute;
@@ -196,7 +196,7 @@
   align-items: center;
   justify-content: center;
   text-align: center;
-  transition: transform 0.2s ease;
+  transition: transform 0.2s linear;
 }
 
 .dessert-select-trigger.is-open .dessert-select-icon {
