@@ -26,7 +26,7 @@ import{r as e}from"./assets/rolldown-runtime-hePW80VL.js";import{n as t,t as n}f
                 <p class="card-price"><span class="price-value">${a}</span>грн</p>
                 <button class="card-btn" type="button">
                     <svg width="24" height="24">
-                        <use href="/images/icons.svg#icon-arrow_outward"></use>
+                        <use href="images/icons.svg#icon-arrow_outward"></use>
                     </svg>
                 </button>
             </div>         
