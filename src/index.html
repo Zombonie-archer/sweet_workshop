@@ -1,12 +1,23 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT3CggOH3UCqPuL9aWKY-fa3dUo4PX2YyMId2wK-QVLzpe1iI1xgJoDezTs&s=10" />
+    <link
+      rel="icon"
+      type="image/svg+xml"
+      href="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT3CggOH3UCqPuL9aWKY-fa3dUo4PX2YyMId2wK-QVLzpe1iI1xgJoDezTs&s=10"
+    />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Солодка майстерня</title>
     <link rel="stylesheet" href="./css/styles.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300..700&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
     <script type="module" src="./js/header.js"></script>
+    <script type="module" src="./js/headerModal.js"></script>
     <script type="module" src="./js/hero.js"></script>
     <script type="module" src="./js/dessert.js"></script>
     <script type="module" src="./js/aboutUs.js"></script>
@@ -18,6 +29,7 @@
   </head>
   <body>
     <load src="./partials/header.html" />
+    <load src="./partials/headerModal.html" />
 
     <main>
       <load src="./partials/hero.html" />
@@ -30,5 +42,9 @@
     <load src="./partials/dessertModal.html" />
     <load src="./partials/orderModal.html" />
     <load src="./partials/footer.html" />
+    
+    <div class="global-loader-overlay hidden" id="globalLoader">
+      <div class="loader-spinner"></div>
+    </div>
   </body>
 </html>
