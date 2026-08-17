@@ -1,6 +1,7 @@
 .footer {
     background-color: #98e9e8;
-    padding: 48px 20px;
+    padding-top: 48px;
+    padding-bottom: 48px;
 }
 
 .footer__content {
@@ -16,7 +17,8 @@
 
 .footer__logo-icon {
     display: block;
-    width: 335px;
+    width: 100%;
+    max-width: 335px;
     height: auto;
 }
 
@@ -29,15 +31,12 @@
 }
 
 .footer__nav a {
-    font-family: 'Work Sans', sans-serif;
-    color: #080C0C;
+    font-family: "Work Sans", sans-serif;
+    color: #080c0c;
     text-decoration: none;
-    font-family: 'Work Sans', sans-serif;;
     font-weight: 600;
     font-size: 18px;
-    line-height: 150%;
-
-    transition: opacity 200ms ease;
+    line-height: 1.5;
 }
 
 .footer__nav a:hover,
@@ -47,7 +46,7 @@
 }
 
 .footer__nav a:active {
-    color: #F19898;
+    color: #f19898;
     text-decoration: underline;
     text-underline-offset: 3px;
 }
@@ -57,50 +56,56 @@
     pointer-events: none;
 }
 
-.footer__icon {
-    width: 32px;
-    height: 32px;
-    fill: #000;
-    color: #000;
-}
-
-
 .footer__socials {
     display: flex;
     align-items: center;
     gap: 24px;
-
-    margin: 0;
+    margin: 0 0 40px;
     padding: 0;
     list-style: none;
-    margin-bottom: 40px;
 }
 
 .footer__icon {
+    display: block;
+    width: 32px;
+    height: 32px;
     fill: #000;
     transition: fill 250ms ease;
 }
 
-
-
 .footer__bottom {
-    border-top: 2px solid #080C0C;
+    border-top: 2px solid #080c0c;
     padding-top: 36px;
     padding-bottom: 8px;
     text-align: center;
 }
 
 .footer__bottom p {
-    font-family: 'Work Sans', sans-serif;
+    margin: 0;
+    font-family: "Work Sans", sans-serif;
     font-weight: 400;
     font-size: 14px;
-    line-height: 150%;
-    margin: 0;
+    line-height: 1.5;
 }
 
+
+/* MOBILE ADAPTIVE: 320px–375px */
+@media screen and (max-width: 374px) {
+    .footer__logo-icon {
+        width: 100%;
+    }
+
+    .footer__nav {
+        gap: 24px;
+    }
+}
+
+
+/* TABLET */
 @media screen and (min-width: 768px) {
     .footer {
-        padding: 48px 32px 28px;
+        padding-top: 48px;
+        padding-bottom: 28px;
     }
 
     .footer__logo {
@@ -111,32 +116,23 @@
         width: 308px;
     }
 
-
     .footer__nav {
         flex-direction: row;
         gap: 32px;
         margin-bottom: 32px;
     }
 
-    .footer__nav a {
-     font-size: 18px;
-     font-weight: 600;
-     }
-
-    .footer__icon {
-     width: 32px;
-     height: 32px;
-     }
-
     .footer__socials {
-      gap: 20px;
+        gap: 20px;
     }
-
 }
 
+
+/* DESKTOP */
 @media screen and (min-width: 1440px) {
     .footer {
-        padding: 64px 40px;
+        padding-top: 64px;
+        padding-bottom: 64px;
     }
 
     .footer__content {
@@ -162,6 +158,7 @@
 
     .footer__socials {
         gap: 12px;
+        margin-bottom: 0;
     }
 
     .footer__bottom {
