@@ -1,7 +1,6 @@
 import iziToast from 'izitoast';
 import 'izitoast/dist/css/iziToast.min.css';
 
-// Ініціалізація елементів через окремі змінні
 const backdrop = document.querySelector('.backdrop');
 const closeBtn = document.querySelector('.modal-btn');
 const orderForm = document.querySelector('.order-form');
@@ -122,7 +121,6 @@ function onFormSubmit(event) {
     });
 }
 
-// Повішення слухачів подій
 if (closeBtn) {
   closeBtn.addEventListener('click', closeModal);
 }

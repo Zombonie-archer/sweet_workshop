@@ -170,7 +170,6 @@ body:has(.backdrop.is-open) {
   color: transparent;
 }
 
-/* Підсвічування помилок валідації */
 .order-wrapper.is-error .order-input,
 .order-wrapper.is-error .order-comment {
   border-color: #c83737;
@@ -195,7 +194,6 @@ body:has(.backdrop.is-open) {
   display: block;
 }
 
-/* Стилі для кнопки */
 .order-form-btn {
   display: block;
   margin: 0 auto;
