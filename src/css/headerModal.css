@@ -44,6 +44,7 @@
 .mobile-menu-inner {
   display: flex;
   flex-direction: column;
+  width: 100%;
   padding-top: 12px;
 }
 
@@ -56,6 +57,24 @@
 .mobile-menu .logo {
   display: flex;
   align-items: center;
+  color: currentColor;
+  background-color: transparent;
+  border-radius: 5px;
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease;
+}
+
+.mobile-menu .logo:hover,
+.mobile-menu .logo:focus-visible {
+  background-color: #080c0c;
+  color: #ffffff;
+  border-radius: 5px;
+}
+
+.mobile-menu .logo:focus-visible {
+  outline: 2px solid #f19898;
+  outline-offset: 2px;
 }
 
 .mobile-menu .header-logo {
@@ -107,4 +126,8 @@
 .mobile-menu-cta {
   width: 100%;
   margin-top: 16px;
+}
+
+body.no-scroll {
+  overflow: hidden;
 }
