@@ -28,6 +28,10 @@
   box-sizing: border-box;
 }
 
+.mobile-menu-item {
+  padding-block: 12px;
+}
+
 .mobile-menu.is-open {
   opacity: 1;
   visibility: visible;
@@ -125,7 +129,7 @@
 
 .mobile-menu-cta {
   width: 100%;
-  margin-top: 16px;
+  margin-top: 36px;
 }
 
 body.no-scroll {
