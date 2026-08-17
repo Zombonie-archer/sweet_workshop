@@ -1,6 +1,6 @@
 import iziToast from 'izitoast';
 import 'izitoast/dist/css/iziToast.min.css';
-import axios from './axios.js';
+import request from './axios.js';
 
 const backdrop = document.querySelector('.contact-backdrop');
 const closeBtn = backdrop
@@ -15,7 +15,7 @@ const commentInput = document.querySelector(
 
 let currentDessertId = null;
 
-export function openModal(dessertId) {
+export function openModal(dessertId = null) {
   currentDessertId = dessertId;
 
   if (backdrop) {
@@ -58,6 +58,7 @@ function onBackdropClick(event) {
 
 async function onFormSubmit(event) {
   event.preventDefault();
+
   clearValidationErrors();
 
   const name = nameInput ? nameInput.value.trim() : '';
@@ -78,6 +79,12 @@ async function onFormSubmit(event) {
     isValid = false;
   }
 
+  if (comment === '') {
+    if (commentInput)
+      commentInput.closest('.order-wrapper')?.classList.add('is-error');
+    isValid = false;
+  }
+
   if (!isValid) {
     iziToast.warning({
       title: 'Увага!',
@@ -95,7 +102,11 @@ async function onFormSubmit(event) {
   };
 
   try {
-    const response = await axios.post('/orders', orderData);
+    const response = await request({
+      method: 'post',
+      body: orderData,
+      route: 'orders',
+    });
 
     iziToast.success({
       title: 'Успішно!',
@@ -108,7 +119,7 @@ async function onFormSubmit(event) {
   } catch (error) {
     iziToast.error({
       title: 'Помилка!',
-      message: 'Не вдалося відправити замовлення. Перевірте введені дані.',
+      message: 'Не вдалося надіслати замовлення. Спробуйте ще раз пізніше.',
       position: 'topRight',
     });
   }
