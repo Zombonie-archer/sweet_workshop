@@ -1,67 +1,72 @@
-.header {    
-    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+.header {  
+  font-family: "Work Sans", sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.5;
+  color: #080c0c;
+}
+
+.logo {
+  height: 72px;
+  padding-block: 21px;
+}
+
+.header-logo {
+  width: 146px;
+  height: 31px;  
+  fill: currentColor;
 }
 
 .mob-header a {
-    line-height: 0;
+  line-height: 0;
 }
 
-.header-container {    
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.header-logo, .header-mobile-menu-icon {
-    fill: currentColor;
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .header-nav-list {
-    display: flex;
-    gap: 16px;
+  display: flex;  
+  padding-block: 24px;
+  align-items: center;
 }
 
 .hidden {
-    display: none;
+  display: none;
+}
+
+.to-orders {
+  padding-block: 8px;
+  padding-inline: 20px;  
+}
+
+.logo-nav-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
 }
 
 @media screen and (min-width: 768px) {
-    .header-container {
-        padding-block: 18px;
-    }
+  .header-mobile-menu {
+    display: none;
+  }
 
-    .logo-nav-wrapper {
-        display: flex;
-        align-items: center;
-        gap: 49px;
-    }
+  .header-nav {
+    display: block;
+  }
 
-    .header-logo {
-        width: 84px;
-        height: 36px;
-    }
-
-    .header-mobile-menu {
-        display: none;
-    }
-
-    .header-order {
-        display: inline-block;
-        padding: 6px 19px;
-    }
-
-    .header-nav {
-        display: block;
-    }
+  .header-nav-list {
+    gap: 16px;
+  }
 }
 
 /* Styles for Desktop devices */
-@media screen and (min-width: 1440px) {
-    .logo-nav-wrapper {
-        gap: 32px;
-    }
+@media screen and (min-width: 1440px) { 
 
-    .header-order {        
-        padding: 6px 55px;        
-    }
+  .header-nav-list {
+    gap: 32px;
+  }
 }
