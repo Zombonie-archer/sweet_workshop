@@ -1,7 +1,9 @@
 import request from './axios.js';
 import iziToast from 'izitoast';
 import "izitoast/dist/css/iziToast.min.css";
+import { createCardModal } from './dessertModal.js';
 import iconsUrl from '../images/icons.svg';
+import { hideLoader } from './utils.js';
 
 const filterContainer = document.querySelector('.dessert-filter');
 const selectContainer = document.querySelector('.dessert-filter-select');
@@ -34,6 +36,7 @@ async function createCategory() {
         selectContainer.insertAdjacentHTML('beforeend', selectorMarcup(categories));
         customOptionsContainer.insertAdjacentHTML('beforeend', customSelectorMarcup(categories));        
     } catch (error) {
+        hideLoader();
         iziToast.error({
             title: 'Увага',
             titleSize: '16',
@@ -92,6 +95,7 @@ async function createDesserts() {
         };
         return dessertsCard;
     } catch (error) {
+        hideLoader();
         iziToast.error({
             title: 'Увага',
             titleSize: '16',
@@ -209,3 +213,19 @@ document.addEventListener('click', () => {
     customOptionsContainer.classList.add('visually-hidden');
     selectTrigger.classList.remove('is-open');
 });
+
+dessertContainer.addEventListener('click', (event) => {
+    const button = event.target.closest('.card-btn');
+    const desserModal = document.querySelector('.dessert-modal');
+    document.body.classList.add('no-scroll');
+    desserModal.classList.add('modal-open');
+    
+    if (button) {
+        const cardItem = button.closest('.card-item');
+        const cardId = cardItem.dataset.id;
+        createCardModal(cardId);
+    }
+    
+});
+
+
