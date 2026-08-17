@@ -1,0 +1,245 @@
+.about {
+  padding-top: 64px;
+  padding-bottom: 64px;
+}
+
+.about-title {
+  margin: 0 0 24px;
+
+  font-family: 'Comfortaa', sans-serif;
+  font-weight: 700;
+  font-size: 36px;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+
+  text-align: center;
+  color: #080c0c;
+}
+
+.about-txt {
+  margin: 0;
+
+  font-family: 'Work Sans', sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 1.5;
+
+  text-align: center;
+  color: #080c0c;
+}
+
+.about-slider-wrapper {
+  margin-top: 48px;
+}
+
+/* ================= MOBILE ================= */
+
+.aboutSwiper {
+  overflow: visible;
+}
+
+.aboutSwiper .swiper-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.aboutSwiper .swiper-slide {
+  width: 100% !important;
+  height: 248px;
+}
+
+.aboutSwiper picture {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.aboutSwiper img {
+  display: block;
+  width: 100%;
+  height: 248px;
+
+  object-fit: cover;
+  border-radius: 16px;
+}
+
+.about-button,
+.about-pagination {
+  display: none !important;
+}
+
+
+/* ================= TABLET ================= */
+
+@media only screen and (min-width: 768px) {
+  .about-txt {
+    width: 704px;
+    margin: 0 auto;
+  }
+
+  .about-slider-wrapper {
+    position: relative;
+
+    width: 704px;
+    margin: 48px auto 0;
+  }
+
+  .aboutSwiper {
+    width: 704px;
+    margin: 0;
+
+    overflow: hidden;
+  }
+
+  .aboutSwiper .swiper-wrapper {
+    flex-direction: row;
+    gap: 0;
+  }
+
+  .aboutSwiper .swiper-slide {
+    width: 340px !important;
+    height: 252px;
+  }
+
+  .aboutSwiper img {
+    width: 340px;
+    height: 252px;
+  }
+
+  /* Стрілки */
+
+  .about-button {
+    position: absolute;
+    top: 126px;
+
+    z-index: 10;
+
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+
+    width: 48px;
+    height: 48px;
+    padding: 12px;
+
+    border: 2px solid #080c0c;
+    border-radius: 100px;
+    background-color: #f5fdfd;
+
+    transform: translateY(-50%);
+
+    cursor: pointer;
+  }
+
+  .about-button-prev {
+    left: -24px;
+  }
+
+  .about-button-next {
+    right: -24px;
+  }
+
+  .about-button-icon {
+    width: 24px;
+    height: 24px;
+
+    fill: #080c0c;
+  }
+  .about-button:hover,
+  .about-button:focus-visible {
+    background-color: #e6a0a0;
+  }
+
+  .about-button:active {
+    background-color: #bd8888;
+  }
+
+  .about-button:focus-visible {
+    outline: none;
+  }
+
+  .about-button.swiper-button-disabled {
+    border-color: #c8cccc;
+    background-color: transparent;
+    cursor: default;
+    pointer-events: none;
+  }
+
+  .about-button.swiper-button-disabled .about-button-icon {
+    fill: #c8cccc;
+  }
+
+  .about-button.swiper-button-disabled {
+    opacity: 0.4;
+    cursor: default;
+  }
+
+  /* Пагінація */
+
+  .about-pagination {
+    position: static !important;
+
+    display: flex !important;
+    justify-content: center;
+    align-items: center;
+
+    width: 100%;
+    margin-top: 48px;
+  }
+
+  .about-pagination .swiper-pagination-bullet {
+    width: 8px;
+    height: 8px;
+
+    margin: 0 4px !important;
+
+    background-color: #c8cccc;
+    opacity: 1;
+  }
+
+  .about-pagination .swiper-pagination-bullet-active {
+    background-color: #080c0c;
+  }
+}
+
+
+/* ================= DESKTOP ================= */
+
+@media only screen and (min-width: 1440px) {
+  .about {
+    padding-top: 80px;
+    padding-bottom: 80px;
+  }
+
+  .about-title {
+    font-size: 48px;
+  }
+
+  .about-txt {
+    width: 768px;
+    margin: 0 auto;
+  }
+
+  .about-slider-wrapper {
+    width: 1312px;
+  }
+
+  .aboutSwiper {
+    width: 1312px;
+  }
+
+  .aboutSwiper .swiper-slide {
+    width: 644px !important;
+    height: 478px;
+  }
+
+  .aboutSwiper img {
+    width: 644px;
+    height: 478px;
+  }
+
+  .about-button {
+    top: 239px;
+  }
+}

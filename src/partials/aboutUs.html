@@ -1,4 +1,150 @@
-<section id="aboutUs" class="section">
+<section id="aboutUs" class="section about">
   <div class="container">
+    <h2 class="about-title">Про нас</h2>
+
+    <p class="about-txt">
+      У нашій 'Солодкій Майстерні' ми створюємо неповторні солодкі шедеври,
+      що приносять радість та задоволення. Наша місія — пропонувати
+      високоякісні десерти, які поєднують у собі вишуканий смак, свіжі
+      інгредієнти та естетичний вигляд.
+    </p>
+
+    <div class="about-slider-wrapper">
+      <div class="swiper aboutSwiper">
+        <div class="swiper-wrapper">
+
+          <!-- Перше фото -->
+          <div class="swiper-slide">
+            <picture>
+              <source
+                media="(min-width: 1440px)"
+                srcset="
+                  /images/aboutUs/aboutUs-desktop-1-1x.jpg 1x,
+                  /images/aboutUs/aboutUs-desktop-1-2x.jpg 2x
+                "
+              />
+
+              <source
+                media="(min-width: 768px)"
+                srcset="
+                  /images/aboutUs/aboutUs-tabl-1-1x.jpg 1x,
+                  /images/aboutUs/aboutUs-tabl-1-2x.jpg 2x
+                "
+              />
+
+              <img
+                src="/images/aboutUs/aboutUs-mob-1-1x.jpg"
+                srcset="/images/aboutUs/aboutUs-mob-1-2x.jpg 2x"
+                alt="Приготування десертів"
+              />
+            </picture>
+          </div>
+
+          <!-- Друге фото -->
+          <div class="swiper-slide">
+            <picture>
+              <source
+                media="(min-width: 1440px)"
+                srcset="
+                  /images/aboutUs/aboutUs-desktop-2-1x.jpg 1x,
+                  /images/aboutUs/aboutUs-desktop-2-2x.jpg 2x
+                "
+              />
+
+              <source
+                media="(min-width: 768px)"
+                srcset="
+                  /images/aboutUs/aboutUs-tabl-2-1x.jpg 1x,
+                  /images/aboutUs/aboutUs-tabl-2-2x.jpg 2x
+                "
+              />
+
+              <img
+                src="/images/aboutUs/aboutUs-mob-2-1x.jpg"
+                srcset="/images/aboutUs/aboutUs-mob-2-2x.jpg 2x"
+                alt="Обговорення декору"
+              />
+            </picture>
+          </div>
+
+          <!-- Третє фото -->
+          <div class="swiper-slide">
+            <picture>
+              <source
+                media="(min-width: 1440px)"
+                srcset="
+                  /images/aboutUs/aboutUs-desktop-3-1x.jpg 1x,
+                  /images/aboutUs/aboutUs-desktop-3-2x.jpg 2x
+                "
+              />
+
+              <source
+                media="(min-width: 768px)"
+                srcset="
+                  /images/aboutUs/aboutUs-tabl-3-1x.jpg 1x,
+                  /images/aboutUs/aboutUs-tabl-3-2x.jpg 2x
+                "
+              />
+
+              <img
+                src="/images/aboutUs/aboutUs-mob-3-1x.jpg"
+                srcset="/images/aboutUs/aboutUs-mob-3-2x.jpg 2x"
+                alt="Вітрина з десертами"
+              />
+            </picture>
+          </div>
+
+          <!-- Четверте фото -->
+          <div class="swiper-slide">
+            <picture>
+              <source
+                media="(min-width: 1440px)"
+                srcset="
+                  /images/aboutUs/aboutUs-desktop-4-1x.jpg 1x,
+                  /images/aboutUs/aboutUs-desktop-4-2x.jpg 2x
+                "
+              />
+
+              <source
+                media="(min-width: 768px)"
+                srcset="
+                  /images/aboutUs/aboutUs-tabl-4-1x.jpg 1x,
+                  /images/aboutUs/aboutUs-tabl-4-2x.jpg 2x
+                "
+              />
+
+              <img
+                src="/images/aboutUs/aboutUs-mob-4-1x.jpg"
+                srcset="/images/aboutUs/aboutUs-mob-4-2x.jpg 2x"
+                alt="Жінка частує торт"
+              />
+            </picture>
+          </div>
+
+        </div>
+      </div>
+
+      <button
+        class="about-button about-button-prev"
+        type="button"
+        aria-label="Попередній слайд"
+      >
+        <svg class="about-button-icon" width="24" height="24">
+          <use href="./images/icons.svg#icon-arrow_back"></use>
+        </svg>
+      </button>
+
+      <button
+        class="about-button about-button-next"
+        type="button"
+        aria-label="Наступний слайд"
+      >
+        <svg class="about-button-icon" width="24" height="24">
+          <use href="./images/icons.svg#icon-arrow_forward"></use>
+        </svg>
+      </button>
+
+      <div class="swiper-pagination about-pagination"></div>
+    </div>
   </div>
 </section>
