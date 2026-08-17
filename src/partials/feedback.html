@@ -1,4 +1,25 @@
 <section id="feedback" class="section">
   <div class="container">
+    <!-- Заголовок та підзаголовок -->
+    <h2 class="feedback-title">Відгуки Клієнтів</h2>
+    <p class="feedback-subtitle">
+      Дізнайтеся, що кажуть наші задоволені клієнти...
+    </p>
+
+    <!-- Індикатор завантаження -->
+    <div id="loader" class="loader"></div>
+
+    <div class="feedback-slider-wrap">
+      <button class="feedback-nav-btn prev" id="feedback-prev">
+        <span class="heavy-left-arrow">&#10140;</span>
+      </button>
+
+      <div class="swiper feedback-swiper" id="swiper-container">
+        <div class="swiper-wrapper" id="feedbacks-wrapper"></div>
+      </div>
+
+      <button class="feedback-nav-btn next" id="feedback-next">&#10140;</button>
+      <div class="swiper-pagination" id="feedback-pagination"></div>
+    </div>
   </div>
 </section>
