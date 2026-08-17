@@ -146,6 +146,29 @@
 
     fill: #080c0c;
   }
+  .about-button:hover,
+  .about-button:focus-visible {
+    background-color: #e6a0a0;
+  }
+
+  .about-button:active {
+    background-color: #bd8888;
+  }
+
+  .about-button:focus-visible {
+    outline: none;
+  }
+
+  .about-button.swiper-button-disabled {
+    border-color: #c8cccc;
+    background-color: transparent;
+    cursor: default;
+    pointer-events: none;
+  }
+
+  .about-button.swiper-button-disabled .about-button-icon {
+    fill: #c8cccc;
+  }
 
   .about-button.swiper-button-disabled {
     opacity: 0.4;
