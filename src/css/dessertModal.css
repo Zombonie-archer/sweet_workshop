@@ -27,10 +27,14 @@
   min-height: 711px;
   border-radius: 16px;
   padding: 64px 20px;
-  overflow-y: auto;
+
   box-sizing: border-box;
-  clip-path: inset(0 round 16px);
-  scrollbar-gutter: stable both-edges;
+  /* clip-path: inset(0 round 16px); */
+  /* scrollbar-gutter: stable both-edges; */
+}
+.dessert-modal-content {
+  overflow-y: auto;
+  height: 100%;
 }
 .modal-close-btn {
   position: absolute;
@@ -47,12 +51,12 @@
 .modal-close-btn:focus {
   border: none;
 }
-.desser-modal-img {
+.dessert-modal-img {
   border-radius: 16px;
   width: 100%;
   min-height: 221px;
 }
-.desser-modal-title {
+.dessert-modal-title {
   font-weight: 700;
   font-size: 32px;
   line-height: 1.2;
@@ -60,7 +64,7 @@
   color: #080c0c;
   margin-top: 24px;
 }
-.desser-modal-price {
+.dessert-modal-price {
   font-family: 'Comfortaa', sans-serif;
   font-weight: 700;
   font-size: 20px;
@@ -118,19 +122,56 @@
   border: 2px solid #080c0c;
   background-color: #f5fdfd;
 }
+
+div.rating {
+  justify-content: flex-end !important;
+  margin-top: 24px;
+}
+.rating.star-svg .star {
+  position: relative;
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+}
+
+.rating.star-svg .star svg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* 1. Закрашенные звезды и половинки делаем черными (перебиваем зеленый цвет библиотеки) */
+.rating.star-svg .star-filled,
+.rating.star-svg .star-half {
+  color: #000000 !important;
+  fill: #000000 !important;
+  stroke: #000000 !important;
+}
+
+/* 2. Для пустой звезды делаем черный контур и прозрачную заливку */
+.rating.star-svg .star-empty {
+  color: #000000 !important;
+  stroke: #000000 !important;
+  fill: transparent !important;
+}
+.star-container {
+  margin: 0 !important;
+}
 @media only screen and (min-width: 768px) {
   .dessert-modal,
   .desser-modal-wrapper {
     padding: 64px 32px;
   }
   .desser-modal-wrapper {
-    max-width: 604px;
+    max-width: 704px;
     height: 100%;
   }
   .order-btn {
     width: 310px;
   }
-  .desser-modal-img {
+  .dessert-modal-img {
     min-height: 480px;
   }
   .desser-modal-wrapper {
@@ -143,7 +184,7 @@
     align-items: center;
     gap: 24px;
   }
-  .dessert-modal-content div {
+  .dessert-modal-content .dessert-modal-item {
     width: calc((100% - 24px * 1) / 2);
   }
   .dessert-modal {
@@ -155,13 +196,13 @@
     height: auto;
     max-width: 1312px;
   }
-  .desser-modal-img {
+  .dessert-modal-img {
     min-height: 435px;
   }
-  .desser-modal-title {
+  .dessert-modal-title {
     font-size: 40px;
   }
-  .desser-modal-price {
+  .dessert-modal-price {
     font-size: 24px;
   }
 }
