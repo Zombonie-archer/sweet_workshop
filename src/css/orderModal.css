@@ -11,7 +11,7 @@ body:has(.backdrop.is-open) {
 }
 /* #endregion */
 
-/* #region Modal window / Backdrop */
+/* #region Modal window */
 .backdrop {
   position: fixed;
   top: 0;
