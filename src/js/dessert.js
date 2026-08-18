@@ -217,15 +217,12 @@ document.addEventListener('click', () => {
 dessertContainer.addEventListener('click', (event) => {
     const button = event.target.closest('.card-btn');
     const desserModal = document.querySelector('.dessert-modal');
-    document.body.classList.add('no-scroll');
-    desserModal.classList.add('modal-open');
-    
-    if (button) {
+    if (button && desserModal) {
+        document.body.classList.add('no-scroll');
+        desserModal.classList.add('modal-open');
         const cardItem = button.closest('.card-item');
         const cardId = cardItem.dataset.id;
         createCardModal(cardId);
     }
     
 });
-
-
