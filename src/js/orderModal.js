@@ -1,6 +1,7 @@
 import iziToast from 'izitoast';
 import 'izitoast/dist/css/iziToast.min.css';
 import request from './axios.js';
+import { hideLoader } from './utils.js';
 
 const backdrop = document.querySelector('.contact-backdrop');
 const closeBtn = backdrop
@@ -117,6 +118,7 @@ async function onFormSubmit(event) {
     orderForm.reset();
     closeModal();
   } catch (error) {
+    hideLoader();
     iziToast.error({
       title: 'Помилка!',
       message: 'Не вдалося надіслати замовлення. Спробуйте ще раз пізніше.',
