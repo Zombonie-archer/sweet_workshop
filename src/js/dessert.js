@@ -119,7 +119,7 @@ function dessertMarcup(dessertsCard) {
             <p class="card-descr"> ${description}</p>
             <div class="card-footer">
                 <p class="card-price"><span class="price-value">${price}</span> грн</p>
-                <button class="card-btn" type="button">
+                <button class="card-btn" type="button" aria-haspopup="dialog" aria-controls="dessert-modal" aria-label="Відкрити модальне вікно з інформацією про десерт">
                     <svg width="24" height="24">
                         <use href="${iconsUrl}#icon-arrow_outward"></use>
                     </svg>
@@ -224,5 +224,4 @@ dessertContainer.addEventListener('click', (event) => {
         const cardId = cardItem.dataset.id;
         createCardModal(cardId);
     }
-    
 });

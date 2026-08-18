@@ -57,13 +57,27 @@ function onBackdropClick(event) {
   }
 }
 
+function formatAndValidatePhone(phone) {
+  let cleaned = phone.replace(/\D/g, '');
+  if (/^0\d{9}$/.test(cleaned)) {
+    cleaned = '38' + cleaned;
+  }
+  const phoneRegex = /^380\d{9}$/;
+
+  if (phoneRegex.test(cleaned)) {
+    return cleaned;
+  }
+
+  return null;
+}
+
 async function onFormSubmit(event) {
   event.preventDefault();
 
   clearValidationErrors();
 
   const name = nameInput ? nameInput.value.trim() : '';
-  const phone = phoneInput ? phoneInput.value.trim() : '';
+  const phone = formatAndValidatePhone(phoneInput ? phoneInput.value.trim() : '');
   const comment = commentInput ? commentInput.value.trim() : '';
 
   let isValid = true;
@@ -74,7 +88,7 @@ async function onFormSubmit(event) {
     isValid = false;
   }
 
-  if (phone === '') {
+  if (!phone) {
     if (phoneInput)
       phoneInput.closest('.order-wrapper')?.classList.add('is-error');
     isValid = false;
