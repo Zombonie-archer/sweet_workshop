@@ -1,8 +1,10 @@
 import request from './axios.js';
 import iconsUrl from '../images/icons.svg';
 import 'css-star-rating/css/star-rating.css';
+import { openModal } from './orderModal.js';
 const desserOverlay = document.querySelector('.dessert-modal');
 const modalCartContainer = document.querySelector('.desser-modal-wrapper');
+
 
 export async function createCardModal(cardId) {
   try {
@@ -88,9 +90,19 @@ function cardModalMarcup(cardInfo) {
 desserOverlay.addEventListener('click', (event) => {
   const isCloseBtn = event.target.closest('.modal-close-btn');
   const isOverlay = event.target === event.currentTarget;
+  const orderBtn = event.target.closest('.order-btn');
   if (isCloseBtn || isOverlay) {
     document.body.classList.remove('no-scroll');
     desserOverlay.classList.remove('modal-open');
+  };
+  if (orderBtn) {
+    desserOverlay.classList.remove('modal-open');
+    document.body.classList.remove('no-scroll');
+    const modalContent = orderBtn.closest('.dessert-modal-content');
+    const cardId = modalContent.dataset.id;
+
+    console.log('ID десерта:', cardId);
+    openModal(cardId);
   }
 });
 
