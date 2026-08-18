@@ -1,8 +1,12 @@
 import iziToast from 'izitoast';
 import 'izitoast/dist/css/iziToast.min.css';
+import request from './axios.js';
+import { hideLoader } from './utils.js';
 
-const backdrop = document.querySelector('.backdrop');
-const closeBtn = document.querySelector('.modal-btn');
+const backdrop = document.querySelector('.contact-backdrop');
+const closeBtn = backdrop
+  ? backdrop.querySelector('.modal-btn')
+  : document.querySelector('.modal-btn');
 const orderForm = document.querySelector('.order-form');
 const nameInput = document.querySelector('.order-form input[name="name"]');
 const phoneInput = document.querySelector('.order-form input[name="phone"]');
@@ -12,18 +16,19 @@ const commentInput = document.querySelector(
 
 let currentDessertId = null;
 
-export function openModal(dessertId) {
+export function openModal(dessertId = null) {
   currentDessertId = dessertId;
-  
-  
+
   if (backdrop) {
     backdrop.classList.add('is-open');
+    document.body.style.overflow = 'hidden';
   }
 }
 
 export function closeModal() {
   if (backdrop) {
     backdrop.classList.remove('is-open');
+    document.body.style.overflow = '';
     clearValidationErrors();
   }
 }
@@ -52,8 +57,9 @@ function onBackdropClick(event) {
   }
 }
 
-function onFormSubmit(event) {
+async function onFormSubmit(event) {
   event.preventDefault();
+
   clearValidationErrors();
 
   const name = nameInput ? nameInput.value.trim() : '';
@@ -74,6 +80,12 @@ function onFormSubmit(event) {
     isValid = false;
   }
 
+  if (comment === '') {
+    if (commentInput)
+      commentInput.closest('.order-wrapper')?.classList.add('is-error');
+    isValid = false;
+  }
+
   if (!isValid) {
     iziToast.warning({
       title: 'Увага!',
@@ -90,36 +102,29 @@ function onFormSubmit(event) {
     dessertId: currentDessertId,
   };
 
-  fetch('https://your-api-domain.com/orders', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify(orderData),
-  })
-    .then(response => {
-      if (!response.ok) {
-        throw new Error(response.statusText);
-      }
-      return response.json();
-    })
-    .then(data => {
-      iziToast.success({
-        title: 'Успішно!',
-        message: 'Ваше замовлення прийнято!',
-        position: 'topRight',
-      });
-
-      orderForm.reset();
-      closeModal();
-    })
-    .catch(error => {
-      iziToast.error({
-        title: 'Помилка!',
-        message: 'Не вдалося відправити замовлення. Перевірте введені дані.',
-        position: 'topRight',
-      });
+  try {
+    const response = await request({
+      method: 'post',
+      body: orderData,
+      route: 'orders',
     });
+
+    iziToast.success({
+      title: 'Успішно!',
+      message: 'Ваше замовлення прийнято!',
+      position: 'topRight',
+    });
+
+    orderForm.reset();
+    closeModal();
+  } catch (error) {
+    hideLoader();
+    iziToast.error({
+      title: 'Помилка!',
+      message: 'Не вдалося надіслати замовлення. Спробуйте ще раз пізніше.',
+      position: 'topRight',
+    });
+  }
 }
 
 if (closeBtn) {
