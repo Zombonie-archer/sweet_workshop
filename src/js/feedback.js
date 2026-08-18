@@ -1,5 +1,5 @@
 import request from './axios';
-import { hideLoader } from './utils';
+import { hideLoader, showLoader } from './utils';
 import iziToast from 'izitoast';
 import 'izitoast/dist/css/iziToast.min.css';
 import Swiper from 'swiper';
@@ -9,11 +9,11 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'css-star-rating/css/star-rating.css';
 
-const swiperContainer = document.getElementById('swiper-container');
-const feedbacksWrapper = document.getElementById('feedbacks-wrapper');
-const nextBtn = document.getElementById('feedback-next');
-const prevBtn = document.getElementById('feedback-prev');
-const paginationEl = document.getElementById('feedback-pagination');
+const swiperContainer = document.querySelector('#swiper-container');
+const feedbacksWrapper = document.querySelector('#feedbacks-wrapper');
+const nextBtn = document.querySelector('.feedback-button-next');
+const prevBtn = document.querySelector('.feedback-button-prev');
+const paginationEl = document.querySelector('#feedback-pagination');
 
 function renderStarRating(rate) {
   const clamped = Math.min(5, Math.max(0, Number(rate) || 0));
@@ -51,12 +51,9 @@ function renderFeedbacks(feedbacks) {
         <div class="swiper-slide">
           <div class="feedback-card">
             <div class="custom-star-rating" style="--rating-percent: ${ratingPercent}%" aria-label="Оцінка: ${feedback.rate} з 5"></div>
-            <div class="feedback-rating">
-            ${renderStarRating(feedback.rate)}
-          </div>
             <p class="review-text">"${feedback.description || 'Відгук відсутній'}"</p>
-            <p class="reviewer-name">- ${feedback.author || 'Анонім'}</p>
-          </div>
+            <p class="reviewer-name"><b>${feedback.author || 'Анонім'}</b></p>
+          </div>          
         </div>
       `;
     })
@@ -73,7 +70,7 @@ function initSwiper() {
     speed: 450,
     grabCursor: true,
     breakpoints: {
-      768: { slidesPerView: 2 },
+      768: { slidesPerView: 3 },
       1100: { slidesPerView: 3 },
     },
     pagination: {
@@ -87,9 +84,18 @@ function initSwiper() {
   });
 }
 
+function hideSwiper() {
+  swiperContainer.style.display = 'none';
+}
+
+function showSwiper() {
+  swiperContainer.style.display = 'block';
+}
+
 async function fetchFeedbacks() {
   try {
-    swiperContainer.style.display = 'none';
+    hideSwiper();
+    
     const response = await request({
       method: 'get',
       body: {},
@@ -97,7 +103,7 @@ async function fetchFeedbacks() {
     });
     const feedbacksArray = response.data.feedbacks;
     renderFeedbacks(feedbacksArray);
-    swiperContainer.style.display = 'block';
+    showSwiper();
     initSwiper();
   } catch (error) {
     hideLoader();

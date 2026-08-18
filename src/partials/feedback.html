@@ -5,15 +5,23 @@
       Найкращі десерти, які я коли-небудь куштував!
     </p>
     <div class="feedback-slider-wrap">
-      <button class="feedback-nav-btn prev" id="feedback-prev">
-        <span class="heavy-left-arrow">&#10140;</span>
-      </button>
-
       <div class="swiper feedback-swiper" id="swiper-container">
         <div class="swiper-wrapper" id="feedbacks-wrapper"></div>
       </div>
 
-      <button class="feedback-nav-btn next" id="feedback-next">&#10140;</button>
+      <button class="feedback-button feedback-button-prev" type="button" aria-label="Попередній відгук">
+        <svg class="feedback-button-icon" width="24" height="24">
+          <use href="./images/icons.svg#icon-arrow_back"></use>
+        </svg>
+      </button>
+
+      <button class="feedback-button feedback-button-next" type="button" aria-label="Наступний відгук">
+        <svg class="feedback-button-icon" width="24" height="24">
+          <use href="./images/icons.svg#icon-arrow_forward"></use>
+        </svg>
+      </button>
+
+
       <div class="swiper-pagination" id="feedback-pagination"></div>
     </div>
   </div>
