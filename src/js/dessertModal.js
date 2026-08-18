@@ -101,7 +101,7 @@ desserOverlay.addEventListener('click', (event) => {
     const modalContent = orderBtn.closest('.dessert-modal-content');
     const cardId = modalContent.dataset.id;
 
-    console.log('ID десерта:', cardId);
+    
     openModal(cardId);
   }
 });

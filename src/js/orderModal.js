@@ -14,7 +14,7 @@ let currentDessertId = null;
 
 export function openModal(dessertId) {
   currentDessertId = dessertId;
-  console.log('айди внутри orderModal', currentDessertId);
+  
   
   if (backdrop) {
     backdrop.classList.add('is-open');
