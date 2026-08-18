@@ -1,7 +1,9 @@
 import request from './axios.js';
 import iziToast from 'izitoast';
 import "izitoast/dist/css/iziToast.min.css";
+import { createCardModal } from './dessertModal.js';
 import iconsUrl from '../images/icons.svg';
+import { hideLoader } from './utils.js';
 
 const filterContainer = document.querySelector('.dessert-filter');
 const selectContainer = document.querySelector('.dessert-filter-select');
@@ -34,6 +36,7 @@ async function createCategory() {
         selectContainer.insertAdjacentHTML('beforeend', selectorMarcup(categories));
         customOptionsContainer.insertAdjacentHTML('beforeend', customSelectorMarcup(categories));        
     } catch (error) {
+        hideLoader();
         iziToast.error({
             title: 'Увага',
             titleSize: '16',
@@ -92,6 +95,7 @@ async function createDesserts() {
         };
         return dessertsCard;
     } catch (error) {
+        hideLoader();
         iziToast.error({
             title: 'Увага',
             titleSize: '16',
@@ -114,7 +118,7 @@ function dessertMarcup(dessertsCard) {
             <h3 class="card-name"> ${name}</h3>
             <p class="card-descr"> ${description}</p>
             <div class="card-footer">
-                <p class="card-price"><span class="price-value">${price}</span>грн</p>
+                <p class="card-price"><span class="price-value">${price}</span> грн</p>
                 <button class="card-btn" type="button">
                     <svg width="24" height="24">
                         <use href="${iconsUrl}#icon-arrow_outward"></use>
@@ -208,4 +212,17 @@ customOptionsContainer.addEventListener('click', (event) => {
 document.addEventListener('click', () => {
     customOptionsContainer.classList.add('visually-hidden');
     selectTrigger.classList.remove('is-open');
+});
+
+dessertContainer.addEventListener('click', (event) => {
+    const button = event.target.closest('.card-btn');
+    const desserModal = document.querySelector('.dessert-modal');
+    if (button && desserModal) {
+        document.body.classList.add('no-scroll');
+        desserModal.classList.add('modal-open');
+        const cardItem = button.closest('.card-item');
+        const cardId = cardItem.dataset.id;
+        createCardModal(cardId);
+    }
+    
 });
