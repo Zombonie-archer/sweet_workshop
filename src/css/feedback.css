@@ -1,0 +1,211 @@
+.feedback-title {
+  font-weight: bold;
+  margin-bottom: 24px;
+  color: #080c0c;
+  text-align: center;
+}
+
+.feedback-subtitle {
+  color: #080c0c;
+  margin-bottom: 40px;
+  text-align: center;
+}
+
+/*SWIPER*/
+.feedback-slider-wrap {
+  position: relative;
+}
+
+.feedback-swiper .swiper-wrapper {
+  align-items: stretch;
+}
+
+
+.feedback-swiper .swiper-slide {
+  height: auto;
+  display: flex;
+}
+
+/* Картка відгуку */
+.feedback-card {
+  background: #ffffff00;
+  padding: 32px;
+  border-radius: 12px;
+  border: 3px solid #080c0c;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  box-sizing: border-box;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+  width: 100%;
+  gap: 24px;
+}
+
+.feedback-card:hover {
+  box-shadow: 0 14px 32px rgba(43, 38, 34, 0.08);
+}
+
+/* CSS Star Rating кастомне рішення (надійна альтернатива для дробових значень) */
+.custom-star-rating {
+  display: inline-block;
+  font-size: 24px;
+  line-height: 1;
+  position: relative;
+}
+
+.custom-star-rating::before {
+  content: '★★★★★';
+  letter-spacing: 2px;
+  background: linear-gradient(90deg,
+      #020100 var(--rating-percent),
+      #e4e5e9 var(--rating-percent));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.review-text {
+  font-style: italic;
+  color: #080c0c;
+  line-height: 1.5;
+  font-size: 18px;
+}
+
+/* Ім'я закріплене відносно лівого нижнього кута картки */
+.reviewer-name {
+  font-weight: normal;
+  font-size: 16px;
+  color: #080c0c;
+}
+
+
+#feedback .swiper-pagination {
+  position: static !important;
+  margin-top: 56px;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  gap: 10px;
+  transform: translateY(50%);
+}
+
+#feedback .swiper-pagination .swiper-pagination-bullet {
+  width: 9px;
+  height: 9px;
+  background: rgba(0, 0, 0, 0.363);
+  opacity: 1;
+  border-radius: 50%;
+  cursor: pointer;
+  transition:
+    background 0.2s ease,
+    transform 0.2s ease;
+  margin: 0 !important;
+}
+
+#feedback .swiper-pagination .swiper-pagination-bullet:hover {
+  background: rgb(66, 66, 66);
+  cursor: pointer;
+  transform: scale(1.15);
+}
+
+#feedback .swiper-pagination .swiper-pagination-bullet-active {
+  background: #080c0c;
+  transform: scale(1.25);
+}
+
+/*ARROWS*/
+.feedback-button {
+  position: absolute;
+  bottom: 0px;
+  z-index: 10;
+
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+
+  width: 48px;
+  height: 48px;
+  padding: 12px;
+
+  border: 2px solid #080c0c;
+  border-radius: 100px;
+  background-color: #f5fdfd;
+
+  transform: translateY(50%);
+
+  cursor: pointer;
+}
+
+.feedback-button-prev {
+  right: 64px;
+}
+
+.feedback-button-next {
+  right: 0px;
+}
+
+.feedback-button-icon {
+  width: 24px;
+  height: 24px;
+
+  fill: #080c0c;
+}
+
+.feedback-button:hover,
+.feedback-button:focus-visible {
+  background-color: #e6a0a0;
+}
+
+.feedback-button:active {
+  background-color: #bd8888;
+}
+
+.feedback-button:focus-visible {
+  outline: none;
+}
+
+.feedback-button.swiper-button-disabled {
+  border-color: #c8cccc;
+  background-color: transparent;
+  cursor: default;
+  pointer-events: none;
+}
+
+.feedback-button.swiper-button-disabled .about-button-icon {
+  fill: #c8cccc;
+}
+
+.feedback-button.swiper-button-disabled {
+  opacity: 0.4;
+  cursor: default;
+}
+
+
+@media only screen and (min-width: 768px) {
+  .feedback-card {
+    padding: 24px;
+  }
+
+  .feedback-button-prev {
+    top: 50%;
+    transform: translate(-50%,-100%);
+    left: 0;
+  }
+
+  .feedback-button-next {
+    top: 50%;
+    transform: translate(50%,-100%);
+    right: 0;
+  }
+
+  #feedback .swiper-pagination {
+    justify-content: center;
+  }
+}
+
+@media only screen and (min-width: 1440px) {
+  .feedback-card {
+    padding: 32px;
+  }
+}
